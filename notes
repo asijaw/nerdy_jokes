@@ -1,0 +1,26 @@
+The Nerdy Jokes Project
+1. Welcomes the user and tell them how to exit
+2. Asks the user to select a category 
+ - Math
+ - Science
+ - Computer 
+ - Dad
+3. Afer a category is selected title of 3 jokes are returned and the user is asked to choose a joke
+4. The user selects a joke title by number and the joke is printed to the screen 
+5. Asks if they would like to choose a new joke or exit
+6. If they choose to see another joke then the category list is brought back
+7. if they choose to exit then it exits the program
+
+classes
+-cli: talks to the user 
+-jokes: creates objects and stores them for display 
+-scraper: scrapes rd.com/jokes
+
+joke category
+-has a url
+-has a title(?)
+-has 3 jokes
+
+joke 
+-has a title
+-has a body of words that serve as the joke

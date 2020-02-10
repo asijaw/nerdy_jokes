@@ -1,6 +1,8 @@
-require "nerdy_jokes/version"
+require 'open-uri'
+require 'nokogiri'
+require 'pry'
 
-module NerdyJokes
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "./nerdy_jokes/version"
+require_relative './nerdy_jokes/cli'
+require_relative './nerdy_jokes/jokes'
+require_relative './nerdy_jokes/scraper'
