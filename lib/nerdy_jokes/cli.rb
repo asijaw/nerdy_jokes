@@ -6,14 +6,11 @@ class NerdyJokes::CLI
         puts "To see the categories of nerdy jokes, enter 'jokes'"
         puts "To exit, enter 'exit'"
 
-        math = Scraper.new("math")
-        science = Scraper.new("science-jokes")
-        computer = Scraper.new("computer")
-        dad = Scraper.new("dad")
-        #Jokes.all.each {|joke| puts "#{joke.description.strip}" if joke.description != ""}
-
-        
-    menu
+        Scraper.new("math")
+        Scraper.new("science-jokes")
+        Scraper.new("computer")
+        Scraper.new("dad")
+        menu
 
     end 
 
@@ -62,6 +59,21 @@ class NerdyJokes::CLI
         after_joke(entry)
     end
 
+    def list_titles(category)
+        puts ""
+        i = 1    
+        Jokes.all.each{|joke| 
+            if category == joke.category && joke.title != "" && i <= 10
+                puts "#{i}. #{joke.title}" 
+                i+=1
+            end 
+        }
+        
+        puts "Please enter the number of a joke title to view the joke"
+        entry = gets.strip
+        print_joke(category, entry)
+    end
+
     def after_joke(input)
         if input == "jokes"
             jokes_list
@@ -82,28 +94,11 @@ class NerdyJokes::CLI
             i = 1
             Jokes.all.each {|joke| 
                 if category == joke.category && joke.title != ""
-                    binding.pry
-                    puts "#{joke.title}\n#{joke.description.gsub(".[A-Z]", ".\n")}" if i == (num.to_i)
+                    puts "#{joke.title}\n#{joke.description}" if i == (num.to_i)
                     i += 1
                 end
             }
         end 
     end 
-
-    def list_titles(category)
-        puts ""
-        i = 1    
-        Jokes.all.each{|joke| 
-            if category == joke.category && joke.title != "" && i <= 10
-                puts "#{i}. #{joke.title}" 
-                i+=1
-            end 
-        }
-        
-        puts "Please enter the number of a joke title to view the joke"
-        entry = gets.strip
-        print_joke(category, entry)
-    end
-
 end
  
